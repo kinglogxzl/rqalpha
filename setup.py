@@ -29,7 +29,7 @@ setup(
     author='ricequant',
     author_email='public@ricequant.com',
     package_data={'': ['*.*']},
-    url='https://github.com/ricequant/rqalpha',
+    url='https://github.com/kinglogxzl/rqalpha',
     install_requires=[str(ir.req) for ir in parse_requirements("requirements.txt", session=False)],
     zip_safe=False,
     entry_points={
