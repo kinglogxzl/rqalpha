@@ -231,6 +231,7 @@ def show_draw_result(title, results_df):
     from matplotlib.pyplot import savefig
     plt.style.use('ggplot')
 
+    print "start plot"
     red = "#aa4643"
     blue = "#4572a7"
     black = "#000000"
