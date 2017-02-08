@@ -298,7 +298,7 @@ def show_draw_result(title, results_df):
 
     leg = plt.legend(loc="upper left")
     leg.get_frame().set_alpha(0.5)
-    savefig('result.jpg')
+    savefig('result.png')
     #plt.show()
 
 
