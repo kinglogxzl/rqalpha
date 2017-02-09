@@ -65,7 +65,7 @@ def update_bundle(data_bundle_path):
         if r.status_code != 200:
             day = day - datetime.timedelta(days=1)
             continue
-
+        print tmp
         out = open(tmp, 'wb')
         total_length = int(r.headers.get('content-length'))
 
