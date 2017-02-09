@@ -80,6 +80,7 @@ def update_bundle(data_bundle_path):
     shutil.rmtree(data_bundle_path, ignore_errors=True)
     os.mkdir(data_bundle_path)
     tar = tarfile.open(tmp, 'r:bz2')
+    print data_bundle_path
     tar.extractall(data_bundle_path)
     tar.close()
     os.remove(tmp)
