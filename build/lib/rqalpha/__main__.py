@@ -232,7 +232,7 @@ def show_draw_result(title, results_df):
     from matplotlib.pyplot import savefig
     plt.style.use('ggplot')
 
-    print "start plot"
+
     red = "#aa4643"
     blue = "#4572a7"
     black = "#000000"
@@ -290,7 +290,7 @@ def show_draw_result(title, results_df):
     ax.grid(b=True, which='minor', linewidth=.2)
     ax.grid(b=True, which='major', linewidth=1)
 
-    #ax.plot(results_df["benchmark_total_returns"], label="benchmark", alpha=1, linewidth=2, color=blue)
+    ax.plot(results_df["benchmark_total_returns"], label="benchmark", alpha=1, linewidth=2, color=blue)
     ax.plot(results_df["total_returns"], label="strategy", alpha=1, linewidth=2, color=red)
 
     # manipulate
