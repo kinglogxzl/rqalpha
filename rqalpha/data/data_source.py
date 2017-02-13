@@ -156,7 +156,7 @@ class LocalDataSource(object):
             raise RuntimeError('No data for {}'.format(order_book_id))
 
         # bars = self._daily_table.fetchwhere('id=={}'.format(sid))
-        print type(self._daily_table)
+
         bars = self._daily_table[start:end]
 
         bars = bars[["date", "open", "high", "low", "close", "volume"]]
@@ -165,7 +165,8 @@ class LocalDataSource(object):
                 ('high', 'float64'), ('low', 'float64'),
                 ('close', 'float64'), ('volume', 'float64'),
             ])
-
+        print bars
+        print type(bars)
         date_col = bars["date"]
         date_col[:] = 1000000 * date_col
         for key in ["open", "high", "low", "close"]:
