@@ -173,5 +173,5 @@ class LocalDataSource(object):
             col = bars[key]
             col[:] = np.round(1 / self.PRICE_SCALE * col, 2)
         print bars
-        print bars["2010-01-04"]
+        print bars[200]
         return bars

@@ -165,7 +165,6 @@ class LocalDataSource(object):
                 ('high', 'float64'), ('low', 'float64'),
                 ('close', 'float64'), ('volume', 'float64'),
             ])
-        print bars
         print type(bars)
         print order_book_id
         date_col = bars["date"]
@@ -174,4 +173,5 @@ class LocalDataSource(object):
             col = bars[key]
             col[:] = np.round(1 / self.PRICE_SCALE * col, 2)
         print bars
+        print bars["2010-01-04"]
         return bars
