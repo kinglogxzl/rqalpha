@@ -66,12 +66,22 @@ class LocalDataSource(object):
         import os
         import pickle
         self._daily_table = bcolz.open(os.path.join(root_dir, LocalDataSource.DAILY))
+        print "daily table"
+        print self._daily_table
         self._instruments = {d['order_book_id']: Instrument(d)
                              for d in pickle.load(open(os.path.join(root_dir, LocalDataSource.INSTRUMENTS), 'rb'))}
+        print "instruments"
+        print pickle.load(open(os.path.join(root_dir, LocalDataSource.INSTRUMENTS), 'rb'))
+        print "instruments"
+        print self._instruments
         self._dividend = bcolz.open(os.path.join(root_dir, LocalDataSource.DIVIDEND))
+        print "yield_curve"
         self._yield_curve = bcolz.open(os.path.join(root_dir, LocalDataSource.YIELD_CURVE))
+        print self._yield_curve
         self._trading_dates = pd.Index(pd.Timestamp(str(d)) for d in
                                        bcolz.open(os.path.join(root_dir, LocalDataSource.TRADING_DATES)))
+        print "trading_dates"
+        print self._trading_dates
 
     def instruments(self, order_book_ids):
         if isinstance(order_book_ids, six.string_types):

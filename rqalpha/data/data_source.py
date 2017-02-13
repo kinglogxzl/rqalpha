@@ -70,10 +70,6 @@ class LocalDataSource(object):
         print self._daily_table
         self._instruments = {d['order_book_id']: Instrument(d)
                              for d in pickle.load(open(os.path.join(root_dir, LocalDataSource.INSTRUMENTS), 'rb'))}
-        print "instruments"
-        print pickle.load(open(os.path.join(root_dir, LocalDataSource.INSTRUMENTS), 'rb'))
-        print "instruments"
-        print self._instruments
         self._dividend = bcolz.open(os.path.join(root_dir, LocalDataSource.DIVIDEND))
         print "yield_curve"
         self._yield_curve = bcolz.open(os.path.join(root_dir, LocalDataSource.YIELD_CURVE))
