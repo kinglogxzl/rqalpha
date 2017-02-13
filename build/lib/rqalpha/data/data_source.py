@@ -172,5 +172,5 @@ class LocalDataSource(object):
         for key in ["open", "high", "low", "close"]:
             col = bars[key]
             col[:] = np.round(1 / self.PRICE_SCALE * col, 2)
-
+        print bars
         return bars

@@ -167,6 +167,7 @@ class LocalDataSource(object):
             ])
         print bars
         print type(bars)
+        print order_book_id
         date_col = bars["date"]
         date_col[:] = 1000000 * date_col
         for key in ["open", "high", "low", "close"]:
