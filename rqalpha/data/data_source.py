@@ -175,6 +175,5 @@ class LocalDataSource(object):
         print bars
         print "--------------------------------------------------------"
         for tt in bars:
-            if (tt[0] == "20161201000000"):
-                print tt
+            print tt
         return bars
