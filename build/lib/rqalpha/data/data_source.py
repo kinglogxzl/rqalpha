@@ -174,5 +174,6 @@ class LocalDataSource(object):
             col[:] = np.round(1 / self.PRICE_SCALE * col, 2)
         print bars
         print "--------------------------------------------------------"
-        print bars[2000]
+        for tt in bars
+            if (tt[0] == "20161201000000") print tt
         return bars
