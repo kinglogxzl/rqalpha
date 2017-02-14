@@ -175,5 +175,5 @@ class LocalDataSource(object):
         print bars
         print "--------------------------------------------------------"
         for tt in bars:
-            print tt
+            print tt[0]
         return bars
