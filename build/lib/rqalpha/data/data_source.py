@@ -174,5 +174,5 @@ class LocalDataSource(object):
             col[:] = np.round(1 / self.PRICE_SCALE * col, 2)
         print bars
         print "--------------------------------------------------------"
-        print bars[200]
+        print bars[2000]
         return bars
