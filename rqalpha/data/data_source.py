@@ -92,8 +92,6 @@ class LocalDataSource(object):
         print self._dtsk_data.loc['0', :, '000001.SZ' , :].values
         print self._dtsk_data.coords['KEY'].values
         print self._dtsk_data.coords['DATE'].values
-
-        tmp = self._dtsk_date.loc[:,]
         #print "daily table"
         #print self._daily_table
         self._instruments = {d['order_book_id']: Instrument(d)
