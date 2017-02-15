@@ -204,7 +204,7 @@ class LocalDataSource(object):
         print "date_col"
         date_col[:] = 1000000 * date_col
         print date_col
-        date_col = tmp
+        date_col[:] = tmp[:]
         print "bars"
         print bars
         for key in ["open", "high", "low", "close"]:
