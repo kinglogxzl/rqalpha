@@ -194,12 +194,11 @@ class LocalDataSource(object):
             ])
         #print type(bars)
         date = self._dtsk_date
+        tmp = np.zeros(date.size)
+        tmp.dtype = 'uint64'
         for i,key in enumerate(date):
-            date[i] = int(key.replace('-','')) * 1000000
-
-        print date.dtype
-
-        print date
+            tmp[i] = int(key.replace('-','')) * 1000000
+        print tmp
         date_col = bars["date"]
         print "date_col"
         print date_col
