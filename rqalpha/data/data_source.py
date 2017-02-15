@@ -89,7 +89,7 @@ class LocalDataSource(object):
         self._dtsk_data = dtsk.load(restoration_base_date = 'no_restoration', \
 	                                kline_type = '1_day', start_date = '2017-01-01', end_date = 'today', \
 	                                stock_list = [], key_group = 'Group.Basic')
-        print self._dtsk_data.loc['0', :, '000001.SZ' , :].values
+        print self._dtsk_data.loc[:, '0', '000001.SZ', :].values
         print self._dtsk_data.coords['KEY'].values
         print self._dtsk_data.coords['DATE'].values
         #print "daily table"
