@@ -92,12 +92,16 @@ def update_bundle(data_bundle_path):
 @click.option('-e', '--end-date', type=Date(), required=True)
 @click.option('-o', '--output-file', type=click.Path(writable=True))
 @click.option('-i', '--init-cash', default=100000, type=click.INT)
+@click.option('-u', '--user-name', type=click.STRING, required=True)
+@click.option('-l', '--log-path', default=os.getcwd(), type=click.Path())
 @click.option('--plot/--no-plot', default=os.name != "nt", help="plot result")
 @click.option('--progress/--no-progress', default=True, help="show progress bar")
 @click.option('-d', '--data-bundle-path', default=os.path.expanduser("~/.rqalpha"), type=click.Path())
-def run(strategy_file, start_date, end_date, output_file, plot, data_bundle_path, init_cash, progress):
+def run(strategy_file, start_date, end_date, output_file, plot, data_bundle_path, init_cash, progress, user_name, log_path):
     '''run strategy from file
     '''
+    print "user_name:" + user_name
+    print "log_path:" + log_path 
     if not os.path.exists(data_bundle_path):
         print_("data bundle not found. Run `%s update_bundle` to download data bundle." % sys.argv[0])
         return
