@@ -176,6 +176,7 @@ class LocalDataSource(object):
         }, index=pd.Index(pd.Timestamp(str(d)) for d in dividends['announcement_date']))
 
     def get_all_bars(self, order_book_id):
+        print "***************get-----bar************************"
         try:
             # sid = self._daily_table.attrs['id_map'][order_book_id]
             start, end = self._daily_table.attrs["line_map"][order_book_id]

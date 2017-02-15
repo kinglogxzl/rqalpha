@@ -176,7 +176,7 @@ class LocalDataSource(object):
         }, index=pd.Index(pd.Timestamp(str(d)) for d in dividends['announcement_date']))
 
     def get_all_bars(self, order_book_id):
-        print "***************get-----bar************************"
+        print "***************get-----bar***********************"
         try:
             # sid = self._daily_table.attrs['id_map'][order_book_id]
             start, end = self._daily_table.attrs["line_map"][order_book_id]
@@ -202,8 +202,10 @@ class LocalDataSource(object):
         print tmp
         date_col = bars["date"]
         print "date_col"
-        print date_col
         date_col[:] = 1000000 * date_col
+        print date_col
+        print "bars"
+        print bars
         for key in ["open", "high", "low", "close"]:
             col = bars[key]
             col[:] = np.round(1 / self.PRICE_SCALE * col, 2)
