@@ -194,7 +194,9 @@ class LocalDataSource(object):
             ])
         #print type(bars)
         date = self._dtsk_date
-        date[:] = date.replace('-','')
+        for key in date
+            key = int(key.replace('-','')) * 1000000
+        print date
         date_col = bars["date"]
         print "date_col"
         print date_col
