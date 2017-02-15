@@ -92,6 +92,7 @@ class LocalDataSource(object):
         print self._dtsk_data.loc[:, '0', '000001.SZ', :].values
         print self._dtsk_data.coords['KEY'].values
         print self._dtsk_data.coords['DATE'].values
+        self._dtsk_date = self._dtsk_data.coords['DATE'].values
         #print "daily table"
         #print self._daily_table
         self._instruments = {d['order_book_id']: Instrument(d)
@@ -192,7 +193,8 @@ class LocalDataSource(object):
                 ('close', 'float64'), ('volume', 'float64'),
             ])
         #print type(bars)
-
+        date = self._dtsk_date
+        date[:] = date.replace('-','')
         date_col = bars["date"]
         print "date_col"
         print date_col
