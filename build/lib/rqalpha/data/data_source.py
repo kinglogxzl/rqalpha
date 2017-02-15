@@ -87,7 +87,7 @@ class LocalDataSource(object):
         from dtsk_python_interface import dtsk
 
         self._dtsk_data = dtsk.load(restoration_base_date = 'no_restoration', \
-	                                kline_type = '1_day', start_date = '2017-01-01', end_date = 'today', \
+	                                kline_type = '1_day', start_date = '2017-01-01', end_date = '2017-01-04', \
 	                                stock_list = [], key_group = 'Group.Basic')
         print self._dtsk_data.loc[:, '0', '000001.SZ', :].values
         print self._dtsk_data.coords['KEY'].values
@@ -196,6 +196,7 @@ class LocalDataSource(object):
         date = self._dtsk_date
         for key in date:
             key = int(key.replace('-','')) * 1000000
+            print key
         print date
         date_col = bars["date"]
         print "date_col"
