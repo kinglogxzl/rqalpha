@@ -66,10 +66,11 @@ class LocalDataSource(object):
         import os
         import pickle
         self._daily_table = bcolz.open(os.path.join(root_dir, LocalDataSource.DAILY))
+        sys.path.append('/Users/Kinglog/Downloads/DTSK-master-7b5466f194b7b5039fb0bb9aefce74a319f193d2/client')
         from dtsk_python_interface import dtsk
         self._dtsk_data = dtsk.load(restoration_base_date = 'no_restoration', \
 	                                kline_type = '1_day', start_date = '2017-01-01', end_date = 'today', \
-	                                stock_list = [], key_group = 'Group.Basic')
+	                                stock_list = [], key_group = 'Group.Basic',local_cache_root = '/Users/Kinglog/Downloads/DTSK-master-7b5466f194b7b5039fb0bb9aefce74a319f193d2/cache')
         print self._dtsk_data.loc[:, :, '000001.SZ' , :].values
         print self._dtsk_data.coords['KEY'].values
         print self._dtsk_data.coords['DATE'].values
