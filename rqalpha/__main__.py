@@ -295,7 +295,6 @@ def show_draw_result(title, results_df, log_path):
     ax.grid(b=True, which='major', linewidth=1)
 
     ax.plot(results_df["benchmark_total_returns"], label="benchmark", alpha=1, linewidth=2, color=blue)
-    print results_df["benchmark_total_returns"]
     ax.plot(results_df["total_returns"], label="strategy", alpha=1, linewidth=2, color=red)
 
     # manipulate
@@ -305,8 +304,7 @@ def show_draw_result(title, results_df, log_path):
     leg = plt.legend(loc="upper left")
     leg.get_frame().set_alpha(0.5)
     save_path = os.path.join(log_path, 'result.png')
-    print save_path
-    savefig('result.png')
+    savefig(save_path)
     #plt.show()
 
 

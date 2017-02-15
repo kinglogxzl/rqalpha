@@ -100,8 +100,8 @@ def update_bundle(data_bundle_path):
 def run(strategy_file, start_date, end_date, output_file, plot, data_bundle_path, init_cash, progress, user_name, log_path):
     '''run strategy from file
     '''
-    print "user_name:" + user_name
-    print "log_path:" + log_path 
+    print "user:" + user_name
+    print "log_path:" + log_path
     if not os.path.exists(data_bundle_path):
         print_("data bundle not found. Run `%s update_bundle` to download data bundle." % sys.argv[0])
         return
@@ -116,7 +116,7 @@ def run(strategy_file, start_date, end_date, output_file, plot, data_bundle_path
         results_df.to_pickle(output_file)
 
     if plot:
-        show_draw_result(strategy_file, results_df)
+        show_draw_result(strategy_file, results_df, log_path)
 
 
 @cli.command()
@@ -228,7 +228,7 @@ def run_strategy(source_code, strategy_filename, start_date, end_date,
     return results_df
 
 
-def show_draw_result(title, results_df):
+def show_draw_result(title, results_df, log_path):
     import matplotlib
     from matplotlib import gridspec
     import matplotlib.image as mpimg
@@ -304,6 +304,8 @@ def show_draw_result(title, results_df):
 
     leg = plt.legend(loc="upper left")
     leg.get_frame().set_alpha(0.5)
+    save_path = os.path.join(log_path, 'result.png')
+    print save_path
     savefig('result.png')
     #plt.show()
 
