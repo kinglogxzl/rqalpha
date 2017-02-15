@@ -66,6 +66,7 @@ class LocalDataSource(object):
         import os
         import pickle
         self._daily_table = bcolz.open(os.path.join(root_dir, LocalDataSource.DAILY))
+        import sys
         sys.path.append('/Users/Kinglog/Downloads/DTSK-master-7b5466f194b7b5039fb0bb9aefce74a319f193d2/client')
         from dtsk_python_interface import dtsk
 
