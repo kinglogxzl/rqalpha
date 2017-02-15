@@ -66,6 +66,7 @@ class LocalDataSource(object):
         import os
         import pickle
         self._daily_table = bcolz.open(os.path.join(root_dir, LocalDataSource.DAILY))
+        '''
         sys.path.append('/Users/Kinglog/Downloads/DTSK-master-7b5466f194b7b5039fb0bb9aefce74a319f193d2/client')
         from dtsk_python_interface import dtsk
         self._dtsk_data = dtsk.load(restoration_base_date = 'no_restoration', \
@@ -74,6 +75,7 @@ class LocalDataSource(object):
         print self._dtsk_data.loc[:, :, '000001.SZ' , :].values
         print self._dtsk_data.coords['KEY'].values
         print self._dtsk_data.coords['DATE'].values
+        '''
         #print "daily table"
         #print self._daily_table
         self._instruments = {d['order_book_id']: Instrument(d)
@@ -173,14 +175,14 @@ class LocalDataSource(object):
                 ('high', 'float64'), ('low', 'float64'),
                 ('close', 'float64'), ('volume', 'float64'),
             ])
-        print type(bars)
+        #print type(bars)
 
         date_col = bars["date"]
         date_col[:] = 1000000 * date_col
         for key in ["open", "high", "low", "close"]:
             col = bars[key]
             col[:] = np.round(1 / self.PRICE_SCALE * col, 2)
-
+            '''
         print "--------------------------------------------------------"
         for tt in bars:
             if (tt[0] == 20161201000000):
@@ -189,4 +191,5 @@ class LocalDataSource(object):
                 print tt
             if (tt[0] == 20161205000000):
                 print tt
+                '''
         return bars

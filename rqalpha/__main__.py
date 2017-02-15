@@ -305,7 +305,7 @@ def show_draw_result(title, results_df, log_path):
     leg.get_frame().set_alpha(0.5)
     save_path = os.path.join(log_path, 'result.png')
     savefig(save_path)
-    #plt.show()
+    plt.show()
 
 
 
