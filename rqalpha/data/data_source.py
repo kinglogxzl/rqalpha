@@ -22,6 +22,22 @@ from functools import partial
 
 from ..instruments import Instrument
 
+def convertSymbol(str):
+
+    tmp = str.split('.')
+    '''
+    if (len(tmp) == 2):
+        if (tmp[1] == 'SZ'):
+            return tmp[0]+'.'+'XSHE'
+        else:
+            return tmp[0]+'.'+'XSHG'
+    '''
+    if (len(tmp) == 2):
+        if (tmp[1] == 'XSHE'):
+            return tmp[0]+'.'+'SZ'
+        else:
+            return tmp[0]+'.'+'SH'
+    return str
 
 class LocalDataSource(object):
     DAILY = 'daily.bcolz'
@@ -73,10 +89,11 @@ class LocalDataSource(object):
         self._dtsk_data = dtsk.load(restoration_base_date = 'no_restoration', \
 	                                kline_type = '1_day', start_date = '2017-01-01', end_date = 'today', \
 	                                stock_list = [], key_group = 'Group.Basic')
-        print self._dtsk_data.loc[:, :, '000001.SZ' , :].values
+        print self._dtsk_data.loc['0', :, '000001.SZ' , :].values
         print self._dtsk_data.coords['KEY'].values
         print self._dtsk_data.coords['DATE'].values
 
+        tmp = self._dtsk_date.loc[:,]
         #print "daily table"
         #print self._daily_table
         self._instruments = {d['order_book_id']: Instrument(d)
@@ -179,11 +196,13 @@ class LocalDataSource(object):
         #print type(bars)
 
         date_col = bars["date"]
+        print "date_col"
+        print date_col
         date_col[:] = 1000000 * date_col
         for key in ["open", "high", "low", "close"]:
             col = bars[key]
             col[:] = np.round(1 / self.PRICE_SCALE * col, 2)
-            '''
+
         print "--------------------------------------------------------"
         for tt in bars:
             if (tt[0] == 20161201000000):
@@ -192,5 +211,5 @@ class LocalDataSource(object):
                 print tt
             if (tt[0] == 20161205000000):
                 print tt
-                '''
+
         return bars
