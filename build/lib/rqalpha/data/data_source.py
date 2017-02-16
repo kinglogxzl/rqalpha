@@ -199,13 +199,13 @@ class LocalDataSource(object):
                     ('high', 'float64'), ('low', 'float64'),
                     ('close', 'float64'), ('volume', 'float64'),
                 ])
-
-        print bars.size
         tmp = bars_tmp["date"]
         print tmp
         for i,key in enumerate(date):
             tmp[i] = int(key.replace('-','')) * 1000000
         print tmp
+        print "bars_tmp"
+        print bars_tmp
         date_col = bars["date"]
         print "date_col"
         print date_col.size
