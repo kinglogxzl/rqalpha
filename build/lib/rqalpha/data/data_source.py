@@ -262,13 +262,13 @@ class LocalDataSource(object):
         tmp = bars_tmp["date"]
         for i,key in enumerate(date):
             tmp[i] = int(key.replace('-','')) * 1000000
-        print tmp
-        print "bars_tmp"
-        print bars_tmp
+        #print tmp
+        #print "bars_tmp"
+        #print bars_tmp
         key_name = [["open","Open"],["high","High"],["low","Low"],["close","Close"],["volume","Volume"]]
         for name in key_name:
             tmp = bars_tmp[name[0]]
             tmp[:] = self._dtsk_data.loc[:, '0', '000001.SZ', name[1]].values
-            print type(tmp[0])
-            print bars_tmp
+            #print type(tmp[0])
+            #print bars_tmp
         return bars_tmp
