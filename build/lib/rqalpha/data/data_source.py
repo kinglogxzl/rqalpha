@@ -196,7 +196,7 @@ class LocalDataSource(object):
                 ('high', 'float64'), ('low', 'float64'),
                 ('close', 'float64'), ('volume', 'float64'),
             ])
-            '''
+        '''
         date = self._dtsk_date
         bars_tmp = np.zeros(date.size)
         bars_tmp = bars_tmp.astype([
