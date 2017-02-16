@@ -186,14 +186,14 @@ class LocalDataSource(object):
         # bars = self._daily_table.fetchwhere('id=={}'.format(sid))
 
         bars = self._daily_table[start:end]
-
+        print type(bars)
         bars = bars[["date", "open", "high", "low", "close", "volume"]]
         bars = bars.astype([
                 ('date', 'uint64'), ('open', 'float64'),
                 ('high', 'float64'), ('low', 'float64'),
                 ('close', 'float64'), ('volume', 'float64'),
             ])
-        #print type(bars)
+        print type(bars[0])
         date = self._dtsk_date
         bars_tmp = np.zeros((date.size,date.size,date.size,date.size,date.size,date.size))
         bars_tmp = bars_tmp.astype([

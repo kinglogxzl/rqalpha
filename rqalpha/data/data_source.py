@@ -201,6 +201,7 @@ class LocalDataSource(object):
                     ('high', 'float64'), ('low', 'float64'),
                     ('close', 'float64'), ('volume', 'float64'),
                 ])
+        print bars.size
         tmp = bars_tmp["date"]
         print tmp
         for i,key in enumerate(date):
@@ -208,6 +209,7 @@ class LocalDataSource(object):
         print tmp
         date_col = bars["date"]
         print "date_col"
+        print date_col.size
         date_col[:] = 1000000 * date_col
         print date_col
         print "bars"
