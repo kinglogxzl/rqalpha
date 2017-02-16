@@ -88,13 +88,15 @@ class LocalDataSource(object):
         from dtsk_python_interface import dtsk
 
         self._dtsk_data = dtsk.load(restoration_base_date = 'no_restoration', \
-	                                kline_type = '1_day', start_date = '2017-01-01', end_date = '2017-01-04', \
+	                                kline_type = '1_day', start_date = '2010-01-01', end_date = '2017-01-04', \
 	                                stock_list = [], key_group = 'Group.Basic')
+        '''
         print self._dtsk_data.loc[:, '0', '000001.SZ', :].values
         print self._dtsk_data.loc[:, '0', '000001.SZ', 'Open'].values
         print type(self._dtsk_data.loc[:, '0', '000001.SZ', 'Open'].values[0])
         print self._dtsk_data.coords['KEY'].values
         print self._dtsk_data.coords['DATE'].values
+        '''
         self._dtsk_date = self._dtsk_data.coords['DATE'].values
 
         #print "daily table"
@@ -178,7 +180,7 @@ class LocalDataSource(object):
             'dividend_cash_before_tax': dividends['cash_before_tax'] / 10000.0,
             'round_lot': dividends['round_lot']
         }, index=pd.Index(pd.Timestamp(str(d)) for d in dividends['announcement_date']))
-
+    '''
     def get_all_bars(self, order_book_id):
         print "***************get-----bar***********************"
         try:
@@ -216,9 +218,6 @@ class LocalDataSource(object):
             tmp[:] = self._dtsk_data.loc[:, '0', '000001.SZ', name[1]].values
             print type(tmp[0])
             print bars_tmp
-
-
-
         date_col = bars["date"]
         print "date_col"
         print date_col.size
@@ -240,3 +239,34 @@ class LocalDataSource(object):
                 print tt
 
         return bars
+    '''
+    def get_all_bars(self, order_book_id):
+        print "***************get-----bar***********************"
+        '''
+        try:
+            # sid = self._daily_table.attrs['id_map'][order_book_id]
+            start, end = self._daily_table.attrs["line_map"][order_book_id]
+        except KeyError:
+            raise RuntimeError('No data for {}'.format(order_book_id))
+        '''
+        # bars = self._daily_table.fetchwhere('id=={}'.format(sid))
+        date = self._dtsk_date
+        bars_tmp = np.zeros(date.size)
+        bars_tmp = bars_tmp.astype([
+                    ('date', 'uint64'), ('open', 'float64'),
+                    ('high', 'float64'), ('low', 'float64'),
+                    ('close', 'float64'), ('volume', 'float64'),
+                ])
+        tmp = bars_tmp["date"]
+        for i,key in enumerate(date):
+            tmp[i] = int(key.replace('-','')) * 1000000
+        print tmp
+        print "bars_tmp"
+        print bars_tmp
+        key_name = [["open","Open"],["high","High"],["low","Low"],["close","Close"],["volume","Volume"]]
+        for name in key_name:
+            tmp = bars_tmp[name[0]]
+            tmp[:] = self._dtsk_data.loc[:, '0', '000001.SZ', name[1]].values
+            print type(tmp[0])
+            print bars_tmp
+        return bars_tmp
