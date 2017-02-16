@@ -210,11 +210,14 @@ class LocalDataSource(object):
         print tmp
         print "bars_tmp"
         print bars_tmp
-        tmp = bars_tmp["open"]
-        tmp[:] = self._dtsk_data.loc[:, '0', '000001.SZ', 'Open'].values
-        print tmp
-        print "bars_tmp"
-        print bars_tmp
+        key_name = [["open","Open"],["high","High"],["low","Low"],["close","Close"],["volume","Volume"]]
+        for name in key_name:
+            tmp = bars_tmp[name[0]]
+            tmp[:] = self._dtsk_data.loc[:, '0', '000001.SZ', name[1]].values
+            print type(tmp[0])
+            print bars_tmp
+
+
 
         date_col = bars["date"]
         print "date_col"
