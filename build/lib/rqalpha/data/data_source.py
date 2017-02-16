@@ -88,7 +88,7 @@ class LocalDataSource(object):
         from dtsk_python_interface import dtsk
 
         self._dtsk_data = dtsk.load(restoration_base_date = 'no_restoration', \
-	                                kline_type = '1_day', start_date = '2015-01-01', end_date = '2016-01-04', \
+	                                kline_type = '1_day', start_date = '2015-02-01', end_date = '2015-03-01', \
 	                                stock_list = [], key_group = 'Group.Basic')
         '''
         print self._dtsk_data.loc[:, '0', '000001.SZ', :].values
