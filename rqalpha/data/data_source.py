@@ -83,6 +83,7 @@ class LocalDataSource(object):
         import pickle
         self._daily_table = bcolz.open(os.path.join(root_dir, LocalDataSource.DAILY))
         import sys
+        '''
         sys.path.append('/Users/Kinglog/Downloads/DTSK-master-7b5466f194b7b5039fb0bb9aefce74a319f193d2/client')
         from dtsk_python_interface import dtsk
 
@@ -95,6 +96,7 @@ class LocalDataSource(object):
         print self._dtsk_data.coords['KEY'].values
         print self._dtsk_data.coords['DATE'].values
         self._dtsk_date = self._dtsk_data.coords['DATE'].values
+        '''
         #print "daily table"
         #print self._daily_table
         self._instruments = {d['order_book_id']: Instrument(d)
@@ -194,6 +196,7 @@ class LocalDataSource(object):
                 ('high', 'float64'), ('low', 'float64'),
                 ('close', 'float64'), ('volume', 'float64'),
             ])
+            '''
         date = self._dtsk_date
         bars_tmp = np.zeros(date.size)
         bars_tmp = bars_tmp.astype([
@@ -202,12 +205,14 @@ class LocalDataSource(object):
                     ('close', 'float64'), ('volume', 'float64'),
                 ])
         tmp = bars_tmp["date"]
-        print tmp
         for i,key in enumerate(date):
             tmp[i] = int(key.replace('-','')) * 1000000
+        tmp = bars_tmp["open"]
+        tmp =
         print tmp
         print "bars_tmp"
         print bars_tmp
+        '''
         date_col = bars["date"]
         print "date_col"
         print date_col.size
