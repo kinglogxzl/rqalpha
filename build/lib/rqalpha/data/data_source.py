@@ -242,16 +242,16 @@ class LocalDataSource(object):
     '''
     def get_all_bars(self, order_book_id):
         print "***************get-----bar***********************"
-        print order_book_id
-        order_book_id = convertSymbol(order_book_id)
-        print type(order_book_id)
-        '''
+
+
         try:
             # sid = self._daily_table.attrs['id_map'][order_book_id]
             start, end = self._daily_table.attrs["line_map"][order_book_id]
         except KeyError:
             raise RuntimeError('No data for {}'.format(order_book_id))
-        '''
+        print order_book_id
+        order_book_id = convertSymbol(order_book_id)
+        print type(order_book_id)
         # bars = self._daily_table.fetchwhere('id=={}'.format(sid))
         date = self._dtsk_date
         bars_tmp = np.zeros(date.size)
