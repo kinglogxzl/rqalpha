@@ -90,6 +90,8 @@ class LocalDataSource(object):
 	                                kline_type = '1_day', start_date = '2017-01-01', end_date = '2017-01-04', \
 	                                stock_list = [], key_group = 'Group.Basic')
         print self._dtsk_data.loc[:, '0', '000001.SZ', :].values
+        print self._dtsk_data.loc[:, '0', '000001.SZ', 'Open'].values
+        print type(self._dtsk_data.loc[:, '0', '000001.SZ', 'Open'].values)
         print self._dtsk_data.coords['KEY'].values
         print self._dtsk_data.coords['DATE'].values
         self._dtsk_date = self._dtsk_data.coords['DATE'].values
