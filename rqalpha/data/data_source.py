@@ -82,6 +82,7 @@ class LocalDataSource(object):
         import os
         import pickle
         self._daily_table = bcolz.open(os.path.join(root_dir, LocalDataSource.DAILY))
+
         import sys
 
         sys.path.append('/Users/Kinglog/Downloads/DTSK-master-7b5466f194b7b5039fb0bb9aefce74a319f193d2/client')
@@ -90,6 +91,7 @@ class LocalDataSource(object):
         self._dtsk_data = dtsk.load(restoration_base_date = 'no_restoration', \
 	                                kline_type = '1_day', start_date = '2015-02-01', end_date = '2015-03-01', \
 	                                stock_list = [], key_group = 'Group.Basic')
+
         '''
         print self._dtsk_data.loc[:, '0', '000001.SZ', :].values
         print self._dtsk_data.loc[:, '0', '000001.SZ', 'Open'].values
@@ -209,9 +211,9 @@ class LocalDataSource(object):
         tmp = bars_tmp["date"]
         for i,key in enumerate(date):
             tmp[i] = int(key.replace('-','')) * 1000000
-        print tmp
-        print "bars_tmp"
-        print bars_tmp
+        #print tmp
+        #print "bars_tmp"
+        #print bars_tmp
         key_name = [["open","Open"],["high","High"],["low","Low"],["close","Close"],["volume","Volume"]]
         for name in key_name:
             tmp = bars_tmp[name[0]]
@@ -219,16 +221,16 @@ class LocalDataSource(object):
             print type(tmp[0])
             print bars_tmp
         date_col = bars["date"]
-        print "date_col"
-        print date_col.size
+        #print "date_col"
+        #print date_col.size
         date_col[:] = 1000000 * date_col
-        print date_col
-        print "bars"
-        print bars
+        #print date_col
+        #print "bars"
+        #print bars
         for key in ["open", "high", "low", "close"]:
             col = bars[key]
             col[:] = np.round(1 / self.PRICE_SCALE * col, 2)
-
+        '''
         print "--------------------------------------------------------"
         for tt in bars:
             if (tt[0] == 20161201000000):
@@ -237,7 +239,7 @@ class LocalDataSource(object):
                 print tt
             if (tt[0] == 20161205000000):
                 print tt
-
+        '''
         return bars
     '''
     def get_all_bars(self, order_book_id):
