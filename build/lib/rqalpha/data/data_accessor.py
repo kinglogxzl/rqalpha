@@ -160,7 +160,7 @@ class LocalDataProxy(DataProxy):
             self._cache[order_book_id] = bars
 
         dt = convert_date_to_int(dt)
-
+        print dt
         i = bars["date"].searchsorted(dt)
         left = i - bar_count + 1 if i >= bar_count else 0
         bars = bars[left:i + 1]

@@ -180,7 +180,7 @@ class LocalDataSource(object):
             'dividend_cash_before_tax': dividends['cash_before_tax'] / 10000.0,
             'round_lot': dividends['round_lot']
         }, index=pd.Index(pd.Timestamp(str(d)) for d in dividends['announcement_date']))
-    '''
+
     def get_all_bars(self, order_book_id):
         print "***************get-----bar***********************"
         try:
@@ -273,3 +273,4 @@ class LocalDataSource(object):
             #print type(tmp[0])
             #print bars_tmp
         return bars_tmp
+    '''
