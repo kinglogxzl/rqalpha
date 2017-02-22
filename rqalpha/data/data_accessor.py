@@ -166,7 +166,6 @@ class LocalDataProxy(DataProxy):
         bars = bars[left:i + 1]
 
         series = pd.Series(bars[field], index=[convert_int_to_date(t) for t in bars["date"]])
-        print series
         return series
 
     def last(self, order_book_id, dt, bar_count, frequency, field):
